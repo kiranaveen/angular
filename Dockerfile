@@ -29,6 +29,12 @@ EOF
 COPY --from=gloursdocker/docker / /
 
 ARG PORT=8085
+ARG PORT1=8085
+
+ARG PORT2=8085
+
+ARG PORT3=8085
+
 
 
 CMD ["ng", "serve", "--host", "0.0.0.0", "--port", PORT"]
