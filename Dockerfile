@@ -37,4 +37,4 @@ ARG PORT3=8085
 
 
 
-CMD ["ng", "serve", "--host", "0.0.0.0", "--port", PORT"]
+CMD ["ng", "serve", "--host", "0.0.0.0", "--port", PORT]
