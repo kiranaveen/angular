@@ -28,4 +28,7 @@ EOF
 # install Docker tools (cli, buildx, compose)
 COPY --from=gloursdocker/docker / /
 
-CMD ["ng", "serve", "--host", "0.0.0.0", "--port", "8085"]
+ARG PORT=8085
+
+
+CMD ["ng", "serve", "--host", "0.0.0.0", "--port", PORT"]
