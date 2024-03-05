@@ -11,7 +11,9 @@ COPY package.json package-lock.json ./
 RUN npm ci
 
 COPY . .
-CMD ["ng", "serve", "--host", "0.0.0.0"]
+ARG PORT=8085
+ENV PORT_ENV=$PORT
+CMD ["sh", "-c", "ng serve --host 0.0.0.0 --port $PORT_ENV"]
 
 FROM builder as dev-envs
 
@@ -28,13 +30,7 @@ EOF
 # install Docker tools (cli, buildx, compose)
 COPY --from=gloursdocker/docker / /
 
-ARG PORT=8085
 ARG PORT1=8085
+ENV PORT_ENV1=$PORT1
 
-ARG PORT2=8085
-
-ARG PORT3=8085
-
-
-
-CMD ["ng", "serve", "--host", "0.0.0.0", "--port", PORT]
+CMD ["ng", "serve", "--host", "0.0.0.0", "--port", PORT_ENV1]
